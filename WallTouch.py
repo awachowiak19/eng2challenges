@@ -1,9 +1,8 @@
 import setup
 import RoboPiLib as RPL
-import time
 
-motorL = 0
-motorR = 1
+motorL = 1
+motorR = 2
 
 motorR_forward = 2000
 motorR_backward = 1000
@@ -24,30 +23,28 @@ def stop():
 
 while counter == 0:
 
-    RPL.digitalRead(17)
+    RPL.analogRead(0)
+    RPL.digitalRead(23)
+    Analog = RPL.analogRead(0)
+    digital = RPL.digitalRead(23)
 
-    obstacle = RPL.digitalRead(17)
 
-    if obstacle == 1:
+    if digital == 1:
 
         forward()
 
-    if obstacle == 0:
-        RPL.servoWrite(motorL,1420)
-        RPL.servoWrite(motorR,1580)
-        time.sleep(.3)
+    if digital == 0 and Analog > 450:
         RPL.servoWrite(motorL,1440)
         RPL.servoWrite(motorR,1560)
-        time.sleep(.3)
+
+    if digital == 0 and Analog < 450 and Analog > 190:
         RPL.servoWrite(motorL,1470)
         RPL.servoWrite(motorR,1530)
-        time.sleep(.3)
-        RPL.servoWrite(motorL,1480)
-        RPL.servoWrite(motorR,1520)
-        time.sleep(.3)
+
+    if digital == 0 and Analog < 191 and Analog > 4:
         RPL.servoWrite(motorL,1490)
         RPL.servoWrite(motorR,1510)
-        time.sleep(.2)
 
+    if digital == 0 and Analog == 4:
         stop()
         counter = counter + 1
