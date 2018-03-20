@@ -33,6 +33,8 @@ while counter == 0:
 
         forward()
 
+
+    
     if digital == 0 and Analog > 450:
         RPL.servoWrite(motorL,1440)
         RPL.servoWrite(motorR,1560)
