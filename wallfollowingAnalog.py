@@ -37,9 +37,9 @@ while counter == 0:
     if distance > 254 and distance < 284:
         reverse()
     if distance < 284:
-        RPL.servoWrite(motorL,1590)
+        RPL.servoWrite(motorL,1570)
         RPL.servoWrite(motorR,motorR_backward)
 
     if distance > 254:
         RPL.servoWrite(motorL,motorL_backward)
-        RPL.servoWrite(motorR,1410)
+        RPL.servoWrite(motorR,1430)
