@@ -23,24 +23,18 @@ def stop():
   RPL.servoWrite(motorL, 0)
   RPL.servoWrite(motorR, 0)
 
-def turnL():
-      RPL.servoWrite(motorL,1460)
-      RPL.servoWrite(motorR,motorR_forward)
-
-def turnR():
-      RPL.servoWrite(motorL,motorL_forward)
-      RPL.servoWrite(motorR, 1540)
-
 while counter == 0:
-    distance = RPL.analogRead(0)
+    Fanalog = RPL.analogRead(0)
+    Banalog = RPL. analogRead(3)
 
-    if distance > 254 and distance < 284:
+    straight = Fanalog - Banalog
+
+    if straight > -5 and straight < 5:
         reverse()
 
-    if distance < 285:
-        RPL.servoWrite(motorL,1530)
+    if straight < -10:
+        RPL.servoWrite(motorL,1550)
         RPL.servoWrite(motorR,motorR_backward)
-
-    if distance > 250:
+    if straight > 10:
         RPL.servoWrite(motorL,motorL_backward)
-        RPL.servoWrite(motorR,1470)
+        RPL.servoWrite(motorR,1450)
