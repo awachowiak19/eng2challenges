@@ -24,8 +24,10 @@ def stop():
   RPL.servoWrite(motorR, 0)
 
 while counter == 0:
+    RPL.analogRead(0)
+    RPL.analogRead(3)
     Fanalog = RPL.analogRead(0)
-    Banalog = RPL. analogRead(3)
+    Banalog = RPL.analogRead(3)
 
     straight = Fanalog - Banalog
 
