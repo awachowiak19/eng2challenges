@@ -31,12 +31,13 @@ while counter == 0:
 
     straight = Fanalog - Banalog
 
-    if straight > -5 and straight < 5:
+    if straight > -2 and straight < 8:
         reverse()
-
-    if straight < -10:
+#if the robot is angled away the wall- turn tiwards
+    if straight < -2:
         RPL.servoWrite(motorL,1550)
         RPL.servoWrite(motorR,motorR_backward)
-    if straight > 10:
+#if the robot is towards  the wall
+    if straight > 8:
         RPL.servoWrite(motorL,motorL_backward)
         RPL.servoWrite(motorR,1450)
