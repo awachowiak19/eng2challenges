@@ -1,5 +1,6 @@
 import setup
 import RoboPiLib as RPL
+#change it to 3 and 8 for sensors
 
 motorL = 1
 motorR = 2
@@ -37,7 +38,8 @@ while counter == 0:
         RPL.servoWrite(motorR,1500)
 
     if Fanalog <= 320 and Banalog <= 320:
-        turn towards wall
+        RPL.servoWrite(motorL,1550)
+        RPL.servoWrite(motorR,motorR_backward)
         
     if Fanalog >= 370 and Banalog >= 370:
         RPL.servoWrite(motorL,motorL_backward)
